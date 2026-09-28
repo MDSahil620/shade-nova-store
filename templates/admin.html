@@ -2,48 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Add Product | Shade Nova Store</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 40px; }
-        .form-container { max-width: 500px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h2 { margin-bottom: 20px; color: #333; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input[type="text"], input[type="number"], textarea, input[type="file"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
-        button:hover { background-color: #0056b3; }
-        .back-link { display: block; margin-top: 15px; text-align: center; text-decoration: none; color: #007bff; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Shade Nova</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-
-<div class="form-container">
-    <h2>Add New Eyewear / Product</h2>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="title">Product Title:</label>
-            <input type="text" id="title" name="title" required>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 bg-white p-4 rounded shadow-sm">
+                <h2 class="mb-4 text-center fw-bold text-primary">Add New Product</h2>
+                <form action="/admin" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label">Product Title</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price (&#8377;)</label>
+                        <input type="number" step="0.01" name="price" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Product Image</label>
+                        <input type="file" name="image" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 btn-lg">Upload Product</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="/" class="text-decoration-none">&larr; Back to Home</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label for="price">Price (₹):</label>
-            <input type="number" step="0.01" id="price" name="price" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label for="image">Product Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-        </div>
-        
-        <button type="submit">Upload Product</button>
-    </form>
-    <a href="{{ url_for('index') }}" class="back-link">← Back to Store</a>
-</div>
-
+    </div>
 </body>
 </html>
